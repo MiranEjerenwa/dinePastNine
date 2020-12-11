@@ -1,5 +1,5 @@
 const address = [];
-const apiKey = "AIzaSyBtDXqrmP1A6NzPFxzjveh5ICYCFywHeKU";
+const apiKey = "AIzaSyAlwdWOAKzwTkeTHHDm68QE5VteeRdGLO4";
 const placeIDs = [];
 let map;
 // let userAddress;
@@ -341,7 +341,7 @@ const renderMarks = (map, idArr) => {
 
                 //Function to check to retrieve opening hours for the day the applicaiton is running
                 function checkHours() {
-                    let isOpen = place.opening_hours.open_now;
+                    let isOpen = place.opening_hours.isOpen();
                     let hours = place.opening_hours.weekday_text;
                     var dayOfTheWeekIndex = new Date().getDay();
                     let displayHours = "";
