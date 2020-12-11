@@ -1,5 +1,5 @@
 const address = [];
-const apiKey = "AIzaSyBtDXqrmP1A6NzPFxzjveh5ICYCFywHeKU";
+const apiKey = "AIzaSyAlwdWOAKzwTkeTHHDm68QE5VteeRdGLO4";
 const placeIDs = [];
 let map;
 // let userAddress;
@@ -18,8 +18,7 @@ let isFormComplete = false;
 let placesToDump = [];
 
 
-
-$(document).ready(function () {
+jQuery(document).ready(function () {
     $('#mainTitle').textillate({ in: { effect: 'rollIn' } });
     $(".form-check-input").on("click", function () {
         $(this).attr("isSelected", "true");
@@ -251,6 +250,8 @@ const getRestPlaces = (coords) => {
 
     let originalUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordsArr[0]},${coordsArr[1]}&radius=10000&keyword=${toSearchFor}&key=${apiKey}`;
     let queryUrl = "https://cors-anywhere.herokuapp.com/" + originalUrl;
+
+    console.log(queryUrl);
 
     $.ajax({
         url: queryUrl,
