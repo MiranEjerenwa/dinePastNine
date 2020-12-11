@@ -194,7 +194,7 @@ const getAddress = () => {
     //pushes it to the address array
     address.push(street, city, state, zipcode);
 }
-
+//+++++++++++++++++++++++++++++++++++++ edited +++++++++++++++++++++++++//
 $('#submit-geo').on('click', function (event) {
     //if the user has given an address and chosen what they want to search for
     event.preventDefault();
@@ -251,7 +251,10 @@ const getRestPlaces = (coords) => {
     let originalUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordsArr[0]},${coordsArr[1]}&radius=10000&keyword=${toSearchFor}&key=${apiKey}`;
     let queryUrl = "https://cors-anywhere.herokuapp.com/" + originalUrl;
 
-    console.log(queryUrl);
+    // console.log("Original =>"+ originalUrl);
+    // console.log("query =>"+queryUrl);
+
+
 
     $.ajax({
         url: queryUrl,
@@ -398,4 +401,43 @@ const renderMarks = (map, idArr) => {
 //Function to get the Travel Direction to resturant with URL 
 const getTravelUrl = (origin, destination) => {
     return `<a href="https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=driving" target="_blank">${destination}</a>`;
+}
+
+
+
+
+
+
+//+++++++++++++++++++++++++++++++++++++ FORM HANDLIJNG AND SENDING +++++++++++++++++++++++++++++++++++++++++//
+
+function processForm(){
+    
+    let selectedChoices = $(".form-check-input");
+    let selectedChoice;
+
+    for(choice of selectedChoices){
+        // console.log(choice);
+        if(choice.checked){
+            selectedChoice = choice;
+            console.log(selectedChoice);
+        }
+    }
+
+
+    const userInfo = {
+        street: $("#address").val().trim(),
+        city: $("#city").val().trim(),
+        state: $("#state").val().trim(),
+        zipcode: $("#zipcode").val().trim(),
+        // choice: selectedChoice,
+
+}
+
+    userJSON = JSON.stringify(userInfo);
+
+    $("#JSONData").text(userJSON);
+    $("#searchDetails").submit();
+    
+
+    // console.log(selectedChoice);
 }
