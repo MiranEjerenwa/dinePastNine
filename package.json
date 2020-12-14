@@ -1,6 +1,7 @@
 {
   "name": "dinepastnine",
   "version": "1.0.0",
+  "engines" : { "node" : ">=0.12" },
   "description": "Locate dinings after 9PM",
   "main": "index.js",
   "dependencies": {

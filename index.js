@@ -73,6 +73,15 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 
 
+// copied from aws sample project for working with dynamoDB//
+var AWS_DEFAULT_REGION = process.env.AWS_DEFAULT_REGION
+var DYNAMODB_MESSAGES_TABLE = process.env.DYNAMODB_MESSAGES_TABLE
+var APP_ID = process.env.APP_ID
+
+AWS.config.update({region: AWS_DEFAULT_REGION});
+
+// ********************************end copied text****************//
+
 app.use(bodyParser.urlencoded({
     extended: true
   }));
