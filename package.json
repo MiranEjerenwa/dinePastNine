@@ -1,14 +1,17 @@
 {
   "name": "dinepastnine",
   "version": "1.0.0",
-  "engines" : { "node" : ">=0.12" },
+  "engines": {
+    "node": ">=0.12"
+  },
   "description": "Locate dinings after 9PM",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.808.0",
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
   },
   "devDependencies": {},
   "scripts": {

@@ -3,4 +3,4 @@ ENV PORT=3000
 EXPOSE $PORT
 COPY . /
 RUN npm install
-CMD ["node", "/server.js"]
+CMD ["node", "/index.js"]

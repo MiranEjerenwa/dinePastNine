@@ -1,0 +1,51 @@
+Conditions:
+  OnDemand: !Equals 
+    - !Ref BillOnDemand
+    - 'true'
+Description: Create a dynamodb tables with conditional on-demand billing.
+Outputs:
+  UserSerachTable:
+    Description: User Search Table
+    Value: !Ref UserSerachTable
+Parameters:
+  BillOnDemand:
+    AllowedPattern: (false|true)
+    Default: 'true'
+    Type: String
+  ReadCapacityUnits:
+    ConstraintDescription: should be between 5 and 10000
+    Default: '5'
+    Description: Provisioned read throughput
+    MaxValue: '10000'
+    MinValue: '5'
+    Type: Number
+  WriteCapacityUnits:
+    ConstraintDescription: should be between 5 and 10000
+    Default: '10'
+    Description: Provisioned write throughput
+    MaxValue: '10000'
+    MinValue: '5'
+    Type: Number
+Resources:
+  UserSerachTable:
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: street
+          AttributeType: S
+        - AttributeName: zipcode
+          AttributeType: 'N'
+      BillingMode: !If 
+        - OnDemand
+        - PAY_PER_REQUEST
+        - PROVISIONED
+      KeySchema:
+        - AttributeName: street
+          KeyType: HASH
+        - AttributeName: zipcode
+          KeyType: RANGE
+      ProvisionedThroughput: !If 
+        - OnDemand
+        - !Ref 'AWS::NoValue'
+        - ReadCapacityUnits: !Ref ReadCapacityUnits
+          WriteCapacityUnits: !Ref WriteCapacityUnits
+    Type: 'AWS::DynamoDB::Table'
