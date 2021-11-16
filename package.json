@@ -7,7 +7,7 @@
   "description": "Locate dinings after 9PM",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.808.0",
+    "aws-sdk": "^2.814.0",
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
